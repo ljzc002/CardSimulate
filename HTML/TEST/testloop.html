@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+
+    window.onclose=function()
+    {
+        console.log("0");
+        if(confirm("是否确定关闭？"))
+        {
+            alert("1");
+        }
+    }
+    window.onunload=function()
+    {
+        console.log("2");
+        if(confirm("是否确定关闭？"))
+        {
+            alert("3");
+        }
+    }
+
+    //返回屏幕的宽度和高度
+    function screen_size()
+    {
+        var wdth=0;
+        var hth=0;
+        wdth=window.screen.availWidth;
+        hth=window.screen.availHeight;
+        return {width:wdth,height:hth};
+    }
+    function MakeDateStr3()
+    {
+        var dt=new Date();
+        var str_date=dt.getHours()+":"+dt.getMinutes()+":"+dt.getSeconds();
+        return str_date;
+    }
+    function openWindow0()
+    {
+        var obj_size=screen_size();
+        myWindow=window.open("", "_blank"
+                ,"left="+(obj_size.width-270)+",top="+(obj_size.height-200)
+                +",width=200,height=150,directories=no,location=no,menubar=no,resizable=no,scrollbars=no,status=no,titlebar=no,toolbar=no,z-look=yes,alwaysRaised=yes");
+        var str_content="<!DOCTYPE html><html><head lang='en'><meta charset='UTF-8'><title>"+MakeDateStr3()+"</title></head><body style='background-color: #aee1e1'>"
+                +document.getElementById("div_base").outerHTML+"</body></html>";
+        myWindow.document.write(str_content);
+    }
+    var url_self="http://localhost:6334/Community/HTML/TEST/testloop.html";
+    function openWindow2()
+    {
+        var obj_size=screen_size();
+        myWindow=window.open(url_self, "_blank"
+                ,"left="+(obj_size.width-270)+",top="+(obj_size.height-200)
+                +",width=200,height=150,directories=no,location=no,menubar=no,resizable=no,scrollbars=no,status=no,titlebar=no,toolbar=no,z-look=yes,alwaysRaised=yes");
+    }
+    function openWindow3()
+    {
+        alert(Math.random());
+    }
+    function openWindow4()
+    {//这种会被chrome默认阻止
+        var obj_size=screen_size();
+        myWindow=window.open(url_self, "_blank"
+                ,"left="+Math.random()*(obj_size.width-270)+",top="+Math.random()*(obj_size.height-200)
+                +",width=200,height=150,directories=no,location=no,menubar=no,resizable=no,scrollbars=no" +
+                ",status=no,titlebar=no,toolbar=no,z-look=yes,alwaysRaised=yes");
+        window.close();
+    }
+    function openWindow()
+    {//这种不会
+        //window.navigate(url_self);
+        window.location.href=url_self;
+    }
+    window.onload=function()
+    {
+        window.document.body.innerHTML=Math.random();
+    }
+    window.setInterval(openWindow,3000);
+</script>
+</html>
