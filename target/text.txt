@@ -1,1 +1,3 @@
-java -jar netty_test01.jar
+jar包地址：
+启动脚本：java -jar netty_test01.jar
+打包命令：在工程目录下执行：mvn clean package
