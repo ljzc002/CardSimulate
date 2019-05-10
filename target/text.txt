@@ -1,3 +1,5 @@
-jar包地址：
+因Github只能上传25M以下单个文件，故将完整工程压缩上传至：https://down.51cto.com/data/2461249，其中target目录下为打包内容。
+
 启动脚本：java -jar netty_test01.jar
+
 打包命令：在工程目录下执行：mvn clean package
