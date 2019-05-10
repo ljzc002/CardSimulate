@@ -1,1 +1,8 @@
 h2数据库的数据文件
+jdbc连接参数如下：
+ds  = new DruidDataSource();
+		ds.setDriverClassName("org.h2.Driver");
+		ds.setUrl("jdbc:h2:tcp://127.0.0.1/../../playground");
+		ds.setUsername("playground");
+		ds.setPassword("playground");
+		ds.setMaxActive(100);
