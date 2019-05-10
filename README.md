@@ -9,7 +9,7 @@ application.yml是SpringBoot的配置文件
 
 pom.xml是Maven配置文件
 
-out文件夹里是一个全工程打的jar包
+target文件夹里是一个全工程打的jar包
 
 CSS、HTML、JS文件夹是上传错了，不知道怎样删除
 
