@@ -45,7 +45,9 @@ function InitMenu()
 {//这种写法并不好，是应该被重构的
             var arr_user = [
                 ["测试菜单","./PAGE/chat.html","bg/pic_test","test","unique"],
-                ["WS初始化测试","./PAGE/KingoftheHill2.html","bg/pic_test","test","unique"]
+                ["WS初始化测试","./PAGE/KingoftheHill2.html","bg/pic_test","test","unique"],
+                ["在新窗口中打开","./PAGE/OpenWindow.html"
+                    ,"bg/pic_test","test","unique"]
             ];
             //根据传回的已经排好序的数据生成二阶导航菜单
                 var str_cdz="";//保存菜单组名
@@ -240,6 +242,21 @@ function close_last()
         if(lis[i].tabno==(tab_no_now-1))
         {
             dispatchMyEvent(lis[i].getElementsByTagName("button")[0],"click");//触发关闭按钮的点击事件
+            break;
+        }
+    }
+}
+//真的是关闭最后一个xuanxiangka
+function close_last2()
+{
+    var lis=document.getElementById("ul_tabnavigation").getElementsByTagName("li");
+    var len=lis.length;
+
+    for(var i=0;i<len;i++)
+    {
+        if(lis[i].tabno==(tab_no_now))
+        {
+            dispatchMyEvent(lis[i].getElementsByTagName("button")[0],"click");
             break;
         }
     }
