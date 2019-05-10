@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>WS系统测试</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/index.css"/>
+</head>
+<body>
+    <div id="all_base">
+        <div style="text-align: right" id="title">
+            <div id="title_left">
+                <!--title.png 54*60-->
+                <img style="float: left;width: 63px;height: 70px;margin-top: 2px;margin-left: 20px;" src="../ASSETS/IMAGE/OREO.png"
+                     onmouseover='var str_title=document.getElementById("str_title");
+                if(str_title.innerHTML=="")
+                {str_title.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;WS系统测试";}
+                else
+                {str_title.innerHTML=""}'>
+                <p id="str_title" style="float:left;font-size: 36px;margin-top: 15px;text-align: left;color: #ffffff;text-shadow:#000 5px 5px 5px;font-family: STXingkai, sans-serif;" >&nbsp;&nbsp;&nbsp;&nbsp;WS系统测试</p>
+            </div>
+            <div id="title_right"></div>
+            <div id="title_bar" style="cursor: auto">
+                    登录日期：<b style="font-size: 14px">????-??-??</b>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    当前用户：<b>未登录</b>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <!--a style="text-align: left;cursor: pointer" onclick="ChangePW()">修改密码</a-->&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <a style="text-align: left;cursor: pointer" onclick="QuitSession()">退出登录</a>
+            </div>
+        </div>
+        <div id="div_left">
+            <div id="div_left_header">
+                <div id="div_left_header1">功能导航</div>
+                <button id="btn_alter" onclick="Alter()"></button>
+            </div>
+            <div id="div_left_ul">
+
+            </div>
+            <div id="div_template" style="display: none">
+
+            </div>
+        </div>
+        <div id="tabcontainer" ><!--添加iframe的区域，要限定iframe的唯一性-->
+            <div class="tabnavigation">
+                <ul id="ul_tabnavigation" style="margin: 0;"></ul>
+            </div>
+            <div class="tabpages"></div>
+        </div>
+        <div id="div_bottom">
+             <span style="font-family: Arial;">©</span>
+        </div>
+        <div id="div_hidden" style="display: none">
+
+            <!--div id="div_mod2">
+                <div class="div_inmod2" style="width: 300px;height: 210px;margin: 0px;border: 1px solid;padding: 0px;float: left;line-height: 20px;display: inline-block">
+                    <div class="div_inmod_head" style="width: 100%;height: 20px;background-color: #E0ECFF;margin:0;border: 0;padding:0;border-bottom: 1px solid;cursor: move;font-family: verdana,arial,sans-serif;font-size: 12px;">
+                        <span style="float: left;margin-left: 10px">修改密码</span>
+                        <BUTTON onclick='btn_del2();' type=submit  class="btn_close"></BUTTON>
+                    </div>
+                    <div class="div_inmod2_content" style="width: 100%;height: 188px;overflow-x: hidden;overflow-y: hidden;margin:0;border: 0;padding:0;background-color: #fbfcfb">
+                        <div class="div_cook2" style="width: 100%;height: 100%">
+                            <ul style="width: 100%;margin-left: 0px">
+                                <li>
+                                    <span style="width: 100px">原密码：</span>
+                                    <input class="str_normal str_pw1" maxlength="10" style="" type="password">
+                                </li>
+                            </ul>
+                            <ul style="width: 100%;margin-left: 0px">
+                                <li>
+                                    <span style="width: 100px">新密码：</span>
+                                    <input class="str_normal str_pw2" maxlength="10"  style="" type="password">
+                                </li>
+                            </ul>
+                            <ul style="width: 100%;margin-left: 0px">
+                                <li>
+                                    <span style="width: 100px">重复新密码：</span>
+                                    <input class="str_normal str_pw3" maxlength="10" style="" type="password">
+
+                                </li>
+                            </ul>
+                            <ul style="width: 100%;">
+                                <li style="float: left;margin-left: 50px"><button onclick="ConfirmPW()" style="width: 80px">确定</button></li>
+                                <li style="float: left;"><button onclick="btn_del2()"  style="width: 80px">取消</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div!-->
+
+            <!--audio id="sound_sdj" src="../SOUND/Taylor%20Swift%20-%20White%20Christmas.mp3" loop="loop"></audio-->
+        </div>
+    </div>
+</body>
+<script src="../JS/PAGE/websocket.js"></script>
+<script src="../JS/MYLIB/ALTER_VIEW2.js"></script>
+<script src="../JS/MYLIB/CREATE_XHR.js"></script>
+<script src="../JS/MYLIB/Events.js"></script>
+<script src="../JS/MYLIB/FileText.js"></script>
+<script src="../JS/MYLIB/TAB_CONTAINER.js"></script>
+<script src="../JS/MYLIB/View.js"></script>
+<script src="../JS/PAGE/Index.js"></script>
+<script>
+    var serverip="",httpport="",wsport="",userid="",userpwd="",token="",UrlHead="",WsHead="",gzrq="";
+
+    window.onresize=Alter3;
+    window.onload=Init;
+    function Init()
+    {
+        var str_hash=window.location.hash.substr(1);
+        var arr_p=str_hash.split("@");
+        serverip=arr_p[0];
+        httpport=arr_p[1];
+        wsport=arr_p[2];
+        userid=arr_p[3];
+        UrlHead="http://"+serverip+":"+httpport;
+        WsHead="ws://"+serverip+":"+wsport;
+        token=localStorage.getItem(userid);
+        Alter3();//重定窗口大小
+        CheckSession();//取登录信息
+    }
+    function btn_del2()
+    {
+
+        delete_div('div_choose');
+        delete_div('div_mask');
+    }
+</script>
+</html>

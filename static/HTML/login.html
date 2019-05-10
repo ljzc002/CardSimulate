@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WS系统测试</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/login3.css"/>
+</head>
+<body onkeydown ="EnterLogin(event)">
+<div id="div_back" style="position:fixed;top:0px;left: 0px;background: url('../ASSETS/IMAGE/background.jpg' ) no-repeat;background-size:100% 100%;">
+    <div class="biaoge" id="div_login">
+        <p class="p_title" style="opacity:1">WS系统测试</p>
+        <ul style="opacity:1">
+            <li> ---IP：<input id="input_serverip" class="input1" type="text" style="margin-left: 13px" value="localhost"></li>
+            <li> HTTP：<input id="input_httpport" class="input1" type="text" style="margin-left: 13px" value="8181"></li>
+            <li> --WS：<input id="input_wsport" class="input1" type="text" style="margin-left: 13px" value="2323"></li>
+            <li>用户名：<input id="input_userid" class="input1" type="text" style="margin-left: 13px"></li>
+            <li>密　码：<input id="input_password" class="input1" type="password" style="margin-left: 13px"></li>
+            <li><button class="input2" onclick="Get_Login()">登录</button>  </li>
+        </ul>
+    </div>
+</div>
+</body>
+<script src="../JS/PAGE/websocket.js"></script>
+<script src="../JS/MYLIB/View.js"></script>
+<script src="../JS/PAGE/login.js"></script>
+<script src="../JS/MYLIB/CREATE_XHR.js"></script>
+<script src="../JS/MYLIB/Events.js"></script>
+<!--script src="../JS/LIB/favico-0.3.10.min.js"></script-->
+<script>
+    //var UrlHead="http://localhost:8081/JGGL/";
+    //http://localhost:8181/HTML/login.html
+    var userid="";
+    window.onload=BeforeLog;
+    window.onresize=Resize_Pllsselect;
+    function BeforeLog()
+    {
+        Resize_Pllsselect();
+        //DrawYzm();
+        //var img=document.createElement("img");
+        //img.src="../ASSETS/IMAGE/t_hj.png";
+        //var favicon=new Favico();//在新版Chrome下不起效
+        //favicon.image(img);
+    }
+    function Resize_Pllsselect()
+    {
+        var size=window_size();
+        document.getElementById("div_back").style.height=(size.height+"px");
+        document.getElementById("div_back").style.width=(size.width+"px");
+    }
+    var flag=0;//为零表示从原始目录访问，为一表示从外层的默认页面访问
+</script>
+</html>
