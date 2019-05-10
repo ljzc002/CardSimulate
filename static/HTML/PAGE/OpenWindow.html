@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过这个菜单打开新的窗口</title>
+    <script src="../../JS/MYLIB/View.js"></script>
+</head>
+<body>
+请允许弹出窗口
+</body>
+<script>
+    var serverip,httpport,wsport,userid,UrlHead,WsHead
+    window.onload=function()
+    {
+        var str_hash=window.location.hash.substr(1);
+        var arr_p=str_hash.split("@");
+        serverip=arr_p[0];
+        httpport=arr_p[1];
+        wsport=arr_p[2];
+        userid=arr_p[3];
+        UrlHead="http://"+serverip+":"+httpport;//这个其实没有用到
+        WsHead="ws://"+serverip+":"+wsport;//
+        var url_report=UrlHead+"/HTML/PAGE/KingoftheHill2.html#"+str_hash;
+        openWindow(url_report);
+    }
+    function openWindow(url_report)
+    {
+        var obj_size=screen_size();
+        myWindow=window.open(url_report, "_blank"
+            ,"left=0,top=0"
+            +",width="+obj_size.width+",height="+obj_size.height//+",alwaysRaised=yes");
+            +",directories=no,location=no,menubar=no,resizable=no,scrollbars=no,status=no" +
+            ",titlebar=no,toolbar=no,z-look=yes,alwaysRaised=yes");
+        if(window.parent)//如果能获取到父页面
+        {
+            window.parent.close_last2();
+        }
+    }
+</script>
+</html>

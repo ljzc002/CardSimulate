@@ -10,7 +10,7 @@
     <div class="biaoge" id="div_login">
         <p class="p_title" style="opacity:1">WS系统测试</p>
         <ul style="opacity:1">
-            <li> ---IP：<input id="input_serverip" class="input1" type="text" style="margin-left: 13px" value="localhost"></li>
+            <li> ---IP：<input id="input_serverip" class="input1" type="text" style="margin-left: 13px" value="127.0.0.1"></li>
             <li> HTTP：<input id="input_httpport" class="input1" type="text" style="margin-left: 13px" value="8181"></li>
             <li> --WS：<input id="input_wsport" class="input1" type="text" style="margin-left: 13px" value="2323"></li>
             <li>用户名：<input id="input_userid" class="input1" type="text" style="margin-left: 13px"></li>
@@ -29,6 +29,8 @@
 <script>
     //var UrlHead="http://localhost:8081/JGGL/";
     //http://localhost:8181/HTML/login.html
+    //http://127.0.0.1:8181/HTML/login.html
+    //虽然大部分时候localhost等于127.0.0.1，但是在浏览器看来这还是两个不同的IP，其本地存储也是不同的！！！！
     var userid="";
     window.onload=BeforeLog;
     window.onresize=Resize_Pllsselect;
