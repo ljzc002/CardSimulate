@@ -1,2 +1,7 @@
 # CardSimulate
-一个开发中的卡牌模拟器
+一个开发中的卡牌模拟器，基于Babylon.js开发，应用了oimo.js物理引擎和Netty Websocket技术。
+java文件夹里是基于SpringBoot2的Java代码
+static文件夹里是前端JavaScript代码
+application.yml是SpringBoot的配置文件
+pom.xml是Maven配置文件
+out文件夹里是一个全工程打的jar包
